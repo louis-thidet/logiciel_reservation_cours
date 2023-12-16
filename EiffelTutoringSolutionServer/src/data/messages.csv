@@ -1,0 +1,4 @@
+waiting_for_answer,answer,recipient_id,student_id,tutor_id,lesson_id,message_id
+yes,yes,1,1,1,1,1
+no,no,1,2,1,2,2
+yes,yes,1,2,1,2,3

@@ -1,0 +1,7 @@
+name,surname,email,password,is_gustave,balance,student_id
+Louis,Thidet,louis.thidet@edu.univ-eiffel.fr,mdp,yes,not_concerned,1
+Gustave,Flaubert,gustave.flaubert@mail.com,mdp,no,150,2
+Jimmy,Student,jim.student@usa.com,psw123,no,0,3
+Alphonse,Daudet,alphonse.daudet@edu.univ-eiffel.fr,moulin,yes,not_concerned,5
+compte,test,a,a,yes,not_concerned,6
+Honoré,Balzac,honore.balzac@rastignac.com,mdp,no,20,7

@@ -1,0 +1,1034 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://main" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://main" xmlns:intf="http://main" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://main" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="conversion">
+    <complexType>
+     <sequence>
+      <element name="sum" type="xsd:double"/>
+      <element name="currency1" type="xsd:string"/>
+      <element name="currency2" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="conversionResponse">
+    <complexType>
+     <sequence>
+      <element name="conversionReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createAccount">
+    <complexType>
+     <sequence>
+      <element name="email" type="xsd:string"/>
+      <element name="name" type="xsd:string"/>
+      <element name="surname" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createAccountResponse">
+    <complexType/>
+   </element>
+   <element name="isEmailUsed">
+    <complexType>
+     <sequence>
+      <element name="email" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="isEmailUsedResponse">
+    <complexType>
+     <sequence>
+      <element name="isEmailUsedReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addFunds">
+    <complexType>
+     <sequence>
+      <element name="studentId" type="xsd:string"/>
+      <element name="addedValue" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addFundsResponse">
+    <complexType/>
+   </element>
+   <element name="deleteMessage">
+    <complexType>
+     <sequence>
+      <element name="messageId" type="xsd:string"/>
+      <element name="token" type="xsd:string"/>
+      <element name="accType" type="xsd:string"/>
+      <element maxOccurs="unbounded" name="accInfos" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteMessageResponse">
+    <complexType/>
+   </element>
+   <element name="bookLesson">
+    <complexType>
+     <sequence>
+      <element name="studentId" type="xsd:string"/>
+      <element name="lessonId" type="xsd:string"/>
+      <element name="token" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="bookLessonResponse">
+    <complexType/>
+   </element>
+   <element name="getTutorsList">
+    <complexType/>
+   </element>
+   <element name="getTutorsListResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getTutorsListReturn" type="impl:ArrayOf_xsd_string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_string">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="isLoginTrue">
+    <complexType>
+     <sequence>
+      <element name="email" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+      <element name="userType" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="isLoginTrueResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="isLoginTrueReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="answerBooking">
+    <complexType>
+     <sequence>
+      <element name="tutorId" type="xsd:string"/>
+      <element name="studentId" type="xsd:string"/>
+      <element name="lessonId" type="xsd:string"/>
+      <element name="messageId" type="xsd:string"/>
+      <element name="token" type="xsd:string"/>
+      <element name="yesOrNo" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="answerBookingResponse">
+    <complexType/>
+   </element>
+   <element name="getInfos">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:string"/>
+      <element name="dataToFind" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getInfosResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getInfosReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createLesson">
+    <complexType>
+     <sequence>
+      <element name="userId" type="xsd:string"/>
+      <element maxOccurs="unbounded" name="lessonData" type="xsd:string"/>
+      <element name="token" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createLessonResponse">
+    <complexType/>
+   </element>
+   <element name="deleteLesson">
+    <complexType>
+     <sequence>
+      <element name="lessonID" type="xsd:string"/>
+      <element maxOccurs="unbounded" name="accountInformations" type="xsd:string"/>
+      <element name="accountType" type="xsd:string"/>
+      <element name="token" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteLessonResponse">
+    <complexType/>
+   </element>
+   <element name="findRowsUser">
+    <complexType>
+     <sequence>
+      <element name="userId" type="xsd:string"/>
+      <element name="filePath" type="xsd:string"/>
+      <element name="accType" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="findRowsUserResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="findRowsUserReturn" type="impl:ArrayOf_xsd_string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="subtractFunds">
+    <complexType>
+     <sequence>
+      <element name="studentId" type="xsd:string"/>
+      <element name="subtractedValue" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="subtractFundsResponse">
+    <complexType/>
+   </element>
+   <element name="startService">
+    <complexType/>
+   </element>
+   <element name="startServiceResponse">
+    <complexType>
+     <sequence>
+      <element name="startServiceReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cancelBookingRequest">
+    <complexType>
+     <sequence>
+      <element name="lessonId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cancelBookingRequestResponse">
+    <complexType/>
+   </element>
+   <element name="findAvailableLessons">
+    <complexType/>
+   </element>
+   <element name="findAvailableLessonsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="findAvailableLessonsReturn" type="impl:ArrayOf_xsd_string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="createAccountRequest">
+
+      <wsdl:part element="impl:createAccount" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="conversionResponse">
+
+      <wsdl:part element="impl:conversionResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="answerBookingRequest">
+
+      <wsdl:part element="impl:answerBooking" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createLessonResponse">
+
+      <wsdl:part element="impl:createLessonResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="findAvailableLessonsResponse">
+
+      <wsdl:part element="impl:findAvailableLessonsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteMessageRequest">
+
+      <wsdl:part element="impl:deleteMessage" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelBookingRequestResponse">
+
+      <wsdl:part element="impl:cancelBookingRequestResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="startServiceResponse">
+
+      <wsdl:part element="impl:startServiceResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTutorsListResponse">
+
+      <wsdl:part element="impl:getTutorsListResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteMessageResponse">
+
+      <wsdl:part element="impl:deleteMessageResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelBookingRequestRequest">
+
+      <wsdl:part element="impl:cancelBookingRequest" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="isLoginTrueRequest">
+
+      <wsdl:part element="impl:isLoginTrue" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="findRowsUserResponse">
+
+      <wsdl:part element="impl:findRowsUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="conversionRequest">
+
+      <wsdl:part element="impl:conversion" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="bookLessonRequest">
+
+      <wsdl:part element="impl:bookLesson" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="isLoginTrueResponse">
+
+      <wsdl:part element="impl:isLoginTrueResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getInfosResponse">
+
+      <wsdl:part element="impl:getInfosResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="answerBookingResponse">
+
+      <wsdl:part element="impl:answerBookingResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="subtractFundsResponse">
+
+      <wsdl:part element="impl:subtractFundsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getInfosRequest">
+
+      <wsdl:part element="impl:getInfos" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="isEmailUsedResponse">
+
+      <wsdl:part element="impl:isEmailUsedResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="bookLessonResponse">
+
+      <wsdl:part element="impl:bookLessonResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTutorsListRequest">
+
+      <wsdl:part element="impl:getTutorsList" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createLessonRequest">
+
+      <wsdl:part element="impl:createLesson" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteLessonRequest">
+
+      <wsdl:part element="impl:deleteLesson" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="subtractFundsRequest">
+
+      <wsdl:part element="impl:subtractFunds" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="isEmailUsedRequest">
+
+      <wsdl:part element="impl:isEmailUsed" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addFundsRequest">
+
+      <wsdl:part element="impl:addFunds" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="findRowsUserRequest">
+
+      <wsdl:part element="impl:findRowsUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createAccountResponse">
+
+      <wsdl:part element="impl:createAccountResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="findAvailableLessonsRequest">
+
+      <wsdl:part element="impl:findAvailableLessons" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="startServiceRequest">
+
+      <wsdl:part element="impl:startService" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteLessonResponse">
+
+      <wsdl:part element="impl:deleteLessonResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addFundsResponse">
+
+      <wsdl:part element="impl:addFundsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="GustaveTutorService">
+
+      <wsdl:operation name="conversion">
+
+         <wsdl:input message="impl:conversionRequest" name="conversionRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:conversionResponse" name="conversionResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createAccount">
+
+         <wsdl:input message="impl:createAccountRequest" name="createAccountRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createAccountResponse" name="createAccountResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isEmailUsed">
+
+         <wsdl:input message="impl:isEmailUsedRequest" name="isEmailUsedRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:isEmailUsedResponse" name="isEmailUsedResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addFunds">
+
+         <wsdl:input message="impl:addFundsRequest" name="addFundsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addFundsResponse" name="addFundsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteMessage">
+
+         <wsdl:input message="impl:deleteMessageRequest" name="deleteMessageRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteMessageResponse" name="deleteMessageResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="bookLesson">
+
+         <wsdl:input message="impl:bookLessonRequest" name="bookLessonRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:bookLessonResponse" name="bookLessonResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTutorsList">
+
+         <wsdl:input message="impl:getTutorsListRequest" name="getTutorsListRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getTutorsListResponse" name="getTutorsListResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isLoginTrue">
+
+         <wsdl:input message="impl:isLoginTrueRequest" name="isLoginTrueRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:isLoginTrueResponse" name="isLoginTrueResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="answerBooking">
+
+         <wsdl:input message="impl:answerBookingRequest" name="answerBookingRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:answerBookingResponse" name="answerBookingResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getInfos">
+
+         <wsdl:input message="impl:getInfosRequest" name="getInfosRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getInfosResponse" name="getInfosResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createLesson">
+
+         <wsdl:input message="impl:createLessonRequest" name="createLessonRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createLessonResponse" name="createLessonResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteLesson">
+
+         <wsdl:input message="impl:deleteLessonRequest" name="deleteLessonRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteLessonResponse" name="deleteLessonResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="findRowsUser">
+
+         <wsdl:input message="impl:findRowsUserRequest" name="findRowsUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:findRowsUserResponse" name="findRowsUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="subtractFunds">
+
+         <wsdl:input message="impl:subtractFundsRequest" name="subtractFundsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:subtractFundsResponse" name="subtractFundsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="startService">
+
+         <wsdl:input message="impl:startServiceRequest" name="startServiceRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:startServiceResponse" name="startServiceResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelBookingRequest">
+
+         <wsdl:input message="impl:cancelBookingRequestRequest" name="cancelBookingRequestRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:cancelBookingRequestResponse" name="cancelBookingRequestResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="findAvailableLessons">
+
+         <wsdl:input message="impl:findAvailableLessonsRequest" name="findAvailableLessonsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:findAvailableLessonsResponse" name="findAvailableLessonsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="GustaveTutorServiceSoapBinding" type="impl:GustaveTutorService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="conversion">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="conversionRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="conversionResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createAccount">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createAccountRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createAccountResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isEmailUsed">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="isEmailUsedRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="isEmailUsedResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addFunds">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addFundsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addFundsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteMessage">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteMessageRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteMessageResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="bookLesson">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="bookLessonRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="bookLessonResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTutorsList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTutorsListRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTutorsListResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isLoginTrue">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="isLoginTrueRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="isLoginTrueResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="answerBooking">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="answerBookingRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="answerBookingResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getInfos">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getInfosRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getInfosResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createLesson">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createLessonRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createLessonResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteLesson">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteLessonRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteLessonResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="findRowsUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="findRowsUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="findRowsUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="subtractFunds">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="subtractFundsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="subtractFundsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="startService">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="startServiceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="startServiceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelBookingRequest">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cancelBookingRequestRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cancelBookingRequestResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="findAvailableLessons">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="findAvailableLessonsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="findAvailableLessonsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="GustaveTutorServiceService">
+
+      <wsdl:port binding="impl:GustaveTutorServiceSoapBinding" name="GustaveTutorService">
+
+         <wsdlsoap:address location="http://localhost:8080/GustaveTutorService/services/GustaveTutorService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

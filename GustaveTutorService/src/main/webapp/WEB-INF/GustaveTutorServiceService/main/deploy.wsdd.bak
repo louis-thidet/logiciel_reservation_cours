@@ -1,0 +1,108 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from GustaveTutorServiceService WSDL service -->
+
+  <service name="GustaveTutorService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://main"/>
+      <parameter name="wsdlServiceElement" value="GustaveTutorServiceService"/>
+      <parameter name="schemaQualified" value="http://main"/>
+      <parameter name="wsdlServicePort" value="GustaveTutorService"/>
+      <parameter name="className" value="main.GustaveTutorServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="GustaveTutorService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="conversion" qname="operNS:conversion" xmlns:operNS="http://main" returnQName="retNS:conversionReturn" xmlns:retNS="http://main" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:sum" xmlns:pns="http://main" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:currency1" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:currency2" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="createAccount" qname="operNS:createAccount" xmlns:operNS="http://main" soapAction="" >
+        <parameter qname="pns:email" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:name" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:surname" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:password" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="isEmailUsed" qname="operNS:isEmailUsed" xmlns:operNS="http://main" returnQName="retNS:isEmailUsedReturn" xmlns:retNS="http://main" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:email" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addFunds" qname="operNS:addFunds" xmlns:operNS="http://main" soapAction="" >
+        <parameter qname="pns:studentId" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:addedValue" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteMessage" qname="operNS:deleteMessage" xmlns:operNS="http://main" soapAction="" >
+        <parameter qname="pns:messageId" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:token" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:accType" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:accInfos" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="bookLesson" qname="operNS:bookLesson" xmlns:operNS="http://main" soapAction="" >
+        <parameter qname="pns:studentId" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lessonId" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:token" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getTutorsList" qname="operNS:getTutorsList" xmlns:operNS="http://main" returnQName="retNS:getTutorsListReturn" xmlns:retNS="http://main" returnType="rtns:ArrayOf_xsd_string" xmlns:rtns="http://main" soapAction="" >
+      </operation>
+      <operation name="isLoginTrue" qname="operNS:isLoginTrue" xmlns:operNS="http://main" returnQName="retNS:isLoginTrueReturn" xmlns:retNS="http://main" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:email" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:password" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:userType" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="answerBooking" qname="operNS:answerBooking" xmlns:operNS="http://main" soapAction="" >
+        <parameter qname="pns:tutorId" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:studentId" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lessonId" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:messageId" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:token" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:yesOrNo" xmlns:pns="http://main" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getInfos" qname="operNS:getInfos" xmlns:operNS="http://main" returnQName="retNS:getInfosReturn" xmlns:retNS="http://main" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:dataToFind" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="createLesson" qname="operNS:createLesson" xmlns:operNS="http://main" soapAction="" >
+        <parameter qname="pns:userId" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lessonData" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:token" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteLesson" qname="operNS:deleteLesson" xmlns:operNS="http://main" soapAction="" >
+        <parameter qname="pns:lessonID" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:accountInformations" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:accountType" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:token" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="findRowsUser" qname="operNS:findRowsUser" xmlns:operNS="http://main" returnQName="retNS:findRowsUserReturn" xmlns:retNS="http://main" returnType="rtns:ArrayOf_xsd_string" xmlns:rtns="http://main" soapAction="" >
+        <parameter qname="pns:userId" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:filePath" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:accType" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="subtractFunds" qname="operNS:subtractFunds" xmlns:operNS="http://main" soapAction="" >
+        <parameter qname="pns:studentId" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:subtractedValue" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="startService" qname="operNS:startService" xmlns:operNS="http://main" returnQName="retNS:startServiceReturn" xmlns:retNS="http://main" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="cancelBookingRequest" qname="operNS:cancelBookingRequest" xmlns:operNS="http://main" soapAction="" >
+        <parameter qname="pns:lessonId" xmlns:pns="http://main" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="findAvailableLessons" qname="operNS:findAvailableLessons" xmlns:operNS="http://main" returnQName="retNS:findAvailableLessonsReturn" xmlns:retNS="http://main" returnType="rtns:ArrayOf_xsd_string" xmlns:rtns="http://main" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="answerBooking deleteMessage createAccount subtractFunds isLoginTrue deleteLesson isEmailUsed findAvailableLessons createLesson startService cancelBookingRequest getInfos addFunds getTutorsList bookLesson findRowsUser conversion"/>
+
+      <arrayMapping
+        xmlns:ns="http://main"
+        qname="ns:ArrayOf_xsd_string"
+        type="java:java.lang.String[]"
+        innerType="cmp-ns:string" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

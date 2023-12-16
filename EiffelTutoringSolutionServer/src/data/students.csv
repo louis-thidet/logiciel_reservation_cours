@@ -1,0 +1,3 @@
+name,surname,email,password,is_gustave,balance,student_id
+louis,thidet,louis.thidet@univ-eiffel.fr,a,yes,not_concerned,1
+Jean,Marin,un.eleve@exterieur.com,a,no,4.859999999999999,2
